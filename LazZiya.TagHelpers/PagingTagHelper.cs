@@ -31,6 +31,16 @@ namespace LazZiya.TagHelpers
         public string UrlTemplate { get; set; }
 
         /// <summary>
+        /// A URL template for paging buttons prefix
+        /// </summary>
+        public string UrlTemplatePrefix { get; set; }
+
+        /// <summary>
+        /// A URL template for paging buttons prefix enable
+        /// </summary>
+        public bool? EnableUrlTemplatePrefix { get; set; } = false;
+
+        /// <summary>
         /// <para>ViewContext property is not required to be passed as parameter, it will be assigned automatically by the tag helper.</para>
         /// <para>View context is required to access TempData dictionary that contains the alerts coming from backend</para>
         /// </summary>
@@ -396,8 +406,17 @@ namespace LazZiya.TagHelpers
                     ShowFirstLast = true;
                 }
 
-                if(string.IsNullOrWhiteSpace(UrlTemplate))
-                    UrlTemplate = CreatePagingUrlTemplate();
+                if (string.IsNullOrWhiteSpace(UrlTemplate))
+                {
+                    UrlTemplate = (EnableUrlTemplatePrefix.GetValueOrDefault(false) ? (UrlTemplatePrefix ?? "") : "") + CreatePagingUrlTemplate();
+                }
+                else
+                {
+                    if (FixUrlPath == false)
+                    {
+                        UrlTemplate = UrlTemplate + CreatePagingUrlTemplate();
+                    }
+                }
 
                 if (ShowFirstLast == true)
                 {

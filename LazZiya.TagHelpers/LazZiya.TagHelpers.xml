@@ -609,6 +609,16 @@
             <![CDATA[?p={0}&s={1}&q=test]]>
             </summary>
         </member>
+        <member name="P:LazZiya.TagHelpers.PagingTagHelper.UrlTemplatePrefix">
+            <summary>
+            A URL template for paging buttons prefix
+            </summary>
+        </member>
+        <member name="P:LazZiya.TagHelpers.PagingTagHelper.EnableUrlTemplatePrefix">
+            <summary>
+            A URL template for paging buttons prefix enable
+            </summary>
+        </member>
         <member name="P:LazZiya.TagHelpers.PagingTagHelper.ViewContext">
             <summary>
             <para>ViewContext property is not required to be passed as parameter, it will be assigned automatically by the tag helper.</para>
@@ -1325,4 +1335,3 @@
         </member>
     </members>
 </doc>
-oc>
