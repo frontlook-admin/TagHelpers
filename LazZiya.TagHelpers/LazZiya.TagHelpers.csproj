@@ -2,6 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0</TargetFrameworks>
+		<DotNetCore>6.0.14</DotNetCore>
 		<ApplicationIcon>files\icon.ico</ApplicationIcon>
 		<Authors>Ziya Mollamahmut</Authors>
 		<Company>Ziyad.info</Company>
@@ -9,7 +10,7 @@
 		<Copyright>Ziyad.info</Copyright>
 		<PackageProjectUrl>https://docs.ziyad.info/en/LazZiya.TagHelpers/v6.0/index.md</PackageProjectUrl>
 		<PackageIcon>icon.png</PackageIcon>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<GeneratePackageOnBuild Condition="'$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
 		<PackageTags>asp.net, core, razor, mvc, taghelpers, taghelper,tag,helper,language,culture,dropdown, pagination, select, enum</PackageTags>
 		<PackageReleaseNotes>
 			- New public param "url-template" use custom url template for the paging buttons.
@@ -21,12 +22,13 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageIconUrl>https://raw.githubusercontent.com/LazZiya/TagHelpers/master/LazZiya.TagHelpers/files/icon.png</PackageIconUrl>
 		<RepositoryUrl>https://github.com/LazZiya/TagHelpers</RepositoryUrl>
-		<GenerateDocumentationFile>False</GenerateDocumentationFile>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<PropertyGroup Label="Version" Condition="'$(DesignTimeBuild)' != 'true' OR '$(BuildingProject)' == 'true'">
-
-		<BuildId>$([System.DateTime]::Now.ToString(yy.MMdd))</BuildId>
+		<MBId>1</MBId>
+		<BuildId Condition="'$(Configuration)'=='Release'">$([System.DateTime]::Now.ToString(yy)).$(MBId)</BuildId>
+		<BuildId Condition="'$(Configuration)'=='Debug'">$([System.DateTime]::Now.ToString(yy.MMdd))</BuildId>
 		<BuildCode>$([System.DateTime]::Now.ToString(hhmmss))</BuildCode>
 		<VersionPrefix>6.0.$(BuildId)</VersionPrefix>
 		<BuildVersion>$(BuildCode)</BuildVersion>
