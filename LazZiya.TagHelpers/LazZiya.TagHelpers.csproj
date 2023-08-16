@@ -23,7 +23,6 @@
 		<PackageIconUrl>https://raw.githubusercontent.com/LazZiya/TagHelpers/master/LazZiya.TagHelpers/files/icon.png</PackageIconUrl>
 		<RepositoryUrl>https://github.com/LazZiya/TagHelpers</RepositoryUrl>
 		<GenerateDocumentationFile>False</GenerateDocumentationFile>
-		<DebugType Condition="'$(Configuration)'!='Debug'">None</DebugType>
 	</PropertyGroup>
 
 	<PropertyGroup Label="Version" Condition="'$(DesignTimeBuild)' != 'true' OR '$(BuildingProject)' == 'true'">
@@ -45,9 +44,6 @@
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)'=='Debug' OR '$(Configuration)'=='Release'">
 		<DocumentationFile>LazZiya.TagHelpers.xml</DocumentationFile>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(TargetFramework)|$(Platform)'=='net6.0|AnyCPU'">
-	  <DebugType>embedded</DebugType>
 	</PropertyGroup>
 	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
 		<FrameworkReference Include="Microsoft.AspNetCore.App" Version="6.0.0" Exclude="Build,Analyzers" />
