@@ -2,7 +2,6 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0</TargetFrameworks>
-		<DotNetCore>6.0.23</DotNetCore>
 		<ApplicationIcon>files\icon.ico</ApplicationIcon>
 		<Authors>Ziya Mollamahmut</Authors>
 		<Company>Ziyad.info</Company>
