@@ -1,7 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0</TargetFrameworks>
+		<TargetFrameworks>net6.0;net8.0</TargetFrameworks>
+		<DotNetCore Condition="'$(TargetFramework)' == 'net6.0'">6.*</DotNetCore>
+		<DotNetCore Condition="'$(TargetFramework)' == 'net8.0'">8.*</DotNetCore>
 		<ApplicationIcon>files\icon.ico</ApplicationIcon>
 		<Authors>Ziya Mollamahmut</Authors>
 		<Company>Ziyad.info</Company>
@@ -29,7 +31,8 @@
 		<BuildId Condition="'$(Configuration)'=='Release'">$([System.DateTime]::Now.ToString(yy)).$(MBId)</BuildId>
 		<BuildId Condition="'$(Configuration)'=='Debug'">$([System.DateTime]::Now.ToString(yy.MMdd))</BuildId>
 		<BuildCode>$([System.DateTime]::Now.ToString(hhmmss))</BuildCode>
-		<VersionPrefix>6.0.$(BuildId)</VersionPrefix>
+		<VersionPrefix Condition="'$(TargetFramework)' == 'net6.0'">6.0.$(BuildId)</VersionPrefix>
+		<VersionPrefix Condition="'$(TargetFramework)' == 'net8.0'">8.0.$(BuildId)</VersionPrefix>
 		<BuildVersion>$(BuildCode)</BuildVersion>
 		<VersionSuffix Condition="'$(Configuration)'=='Debug'">D$(BuildCode)</VersionSuffix>
 
@@ -44,8 +47,8 @@
 	<PropertyGroup Condition="'$(Configuration)'=='Debug' OR '$(Configuration)'=='Release'">
 		<DocumentationFile>LazZiya.TagHelpers.xml</DocumentationFile>
 	</PropertyGroup>
-	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
-		<FrameworkReference Include="Microsoft.AspNetCore.App" Version="6.0.0" Exclude="Build,Analyzers" />
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" Version="$(DotNetCore)" Exclude="Build,Analyzers" />
 	</ItemGroup>
 
 	<ItemGroup>
