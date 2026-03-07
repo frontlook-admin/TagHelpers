@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Solution>
+  <Properties Name="Configuration">
+    <Item Value="Debug|Any CPU" />
+    <Item Value="Release|Any CPU" />
+  </Properties>
+  <Project Path="LazZiya.TagHelpers\LazZiya.TagHelpers.csproj" Type="9A19103F-16F7-4668-BE54-9A1E7A4F7556" Guid="080D63B6-33A9-47D5-99FF-F636542694EB" />
+</Solution>
